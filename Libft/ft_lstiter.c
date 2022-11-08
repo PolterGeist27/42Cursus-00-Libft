@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:36:02 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 17:12:34 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:37:43 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	while (lst[i].next != NULL)
+	tmp = lst;
+	while (tmp != NULL)
 	{
-		f(lst[i].content);
-		i++;
+		(*f)(tmp->content);
+		tmp = tmp->next;
 	}
 }

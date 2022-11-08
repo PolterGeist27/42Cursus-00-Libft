@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:36:35 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 17:16:21 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:47:41 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,24 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	size_t	i;
-	size_t	size;
+	t_list	*head;
+	t_list	*tmp;
 	t_list	*new;
 
-	i = 0;
-	size = ft_lstsize(lst);
-	new = (t_list *)malloc(size * sizeof(t_list));
-	while (lst[i].next != NULL)
+	head = ft_lstnew((*f)(lst->content));
+	if (!head || !lst)
+		return (NULL);
+	tmp = lst->next;
+	while (tmp != NULL)
 	{
-		new[i].content = lst[i].content;
-		// ...
+		new = ft_lstnew((*f)(tmp->content));
+		if (!new)
+		{
+			ft_lstclear(&head, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&head, new);
+		tmp = tmp->next;
 	}
+	return (head);
 }

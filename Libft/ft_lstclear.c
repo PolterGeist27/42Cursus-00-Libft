@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:35:07 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 17:09:00 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/08 12:28:58 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	size_t	i;
+	t_list	*tmp;
 
-	i = 0;
-	while(lst[i]->next != NULL)
+	if (!lst)
+		return ;
+	while (*lst != NULL)
 	{
-		del(lst[i]);
-		free(lst[i]);
-		i++;
+		tmp = (*lst)->next;
+		ft_lstdelone(*lst, del);
+		*lst = tmp;
 	}
-	*lst = NULL;
 }

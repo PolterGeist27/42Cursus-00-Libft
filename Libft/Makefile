@@ -55,7 +55,7 @@ LIBC = ar rc
 
 all: ${NAME}
 
-${NAME}:
+$(NAME):
 	${CC} ${FLAGS} -c ${SRCS} -I ${INC}
 	${LIBC} ${NAME} ${OBJS}
 
@@ -64,7 +64,7 @@ bonus: ${NAME}
 	${LIBC} ${NAME} ${BNS_OBJS}
 
 clean:
-	${RM} ${OBJS}
+	${RM} ${OBJS} ${BNS_OBJS}
 
 fclean: clean
 	${RM} ${NAME}

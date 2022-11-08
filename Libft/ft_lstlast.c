@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:33:14 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 16:58:23 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/08 11:53:37 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,12 @@
 
 t_list	*ft_lstlast(t_list *lst)
 {
-	size_t	i;
-	
-	while (lst[i].next != NULL)
-		i++;
-	return (lst[i - 1].next);
+	t_list	*tmp;
+
+	tmp = lst;
+	while (tmp->next != NULL)
+	{
+		tmp = tmp->next;
+	}
+	return (tmp);
 }
