@@ -1,32 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/03 13:04:09 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 15:07:00 by diogmart         ###   ########.fr       */
+/*   Created: 2022/11/07 14:31:32 by diogmart          #+#    #+#             */
+/*   Updated: 2022/11/07 16:54:54 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	size_t		i;
-	const char	*ptr;
-
-	i = 0;
-	ptr = ((char *)s);
-	while (*ptr != '\0' && i < n)
+	if (*lst == NULL)
 	{
-		if (*ptr == c)
-			return ((unsigned char *)ptr);
-		ptr++;
-		i++;
+		new->next = NULL;
+		*lst = new; 
 	}
-	if (c == '\0')
-		return ((unsigned char *)ptr);
-	return (0);
+	else
+	{
+		new->next = *lst;
+		*lst = new;
+	}
 }

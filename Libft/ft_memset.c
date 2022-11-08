@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 15:36:35 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/03 15:49:03 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/07 11:27:07 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	*ft_memset(void *s, int c, size_t n)
 	i = 0;
 	while (i < n)
 	{
-		*((unsigned char *)s + i) = c; // s[i]
+		*((unsigned char *)s + i) = c;
 		i++;
 	}
 	return (s);

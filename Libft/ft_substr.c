@@ -1,40 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/02 16:26:14 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 16:44:23 by diogmart         ###   ########.fr       */
+/*   Created: 2022/11/07 11:17:03 by diogmart          #+#    #+#             */
+/*   Updated: 2022/11/07 15:52:13 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memmove(void *dest, const void *src, size_t n)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	char	*ptr;
 
+	ptr = (char *)malloc(len * sizeof(char));
+	if (!ptr)
+		return (0);
 	i = 0;
-	if (dest > src)
+	while (len > i && *(s + start + i) != '\0')
 	{
-		n--;
-		while (n >= 0)
-		{
-			*((unsigned char *)dest + n) = *((unsigned char *)src + n);
-			if (n == 0)
-				break ;
-			n--;
-		}
+		ptr[i] = *(s + start + i);
+		i++;
 	}
-	else
-	{
-		while (i < n)
-		{
-			*((unsigned char *)dest + i) = *((unsigned char *)src + i);
-			i++;
-		}
-	}
-	return (dest);
+	ptr[i] = '\0';
+	return (ptr);
 }
+
+/*
+#include <stdio.h>
+
+int	main()
+{
+	char	*str = "lorem ipsum dolor sit amet";
+	int		i = 7;
+	size_t	len = 10;
+
+	printf("String: %s	|	Start: %d\nResult: %s\n", str, i, ft_substr(str, i, len));
+}
+*/

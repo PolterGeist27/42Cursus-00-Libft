@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 11:43:51 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/03 12:31:33 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/07 11:58:05 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ char	*ft_strrchr(const char *s, int c)
 	while (i >= 0)
 	{
 		if (*ptr == c)
-			return ((unsigned char *)ptr);
+			return ((char *)ptr);
 		ptr--;
 		i--;
 	}
 	if (c == '\0')
-		return ((unsigned char *)ptr);
+		return ((char *)ptr);
 	return (0);
 }
 
