@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:32:05 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/10 12:02:05 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 16:00:37 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,20 +15,18 @@
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	char	*str;
-	size_t	start;
 	size_t	len;
-	size_t	total;
 
-	if (!s1 || !s2)
-		return (NULL);
+	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = (char *)malloc(len * sizeof(char));
 	if (!str)
 		return (NULL);
-	start = ft_strlcpy(str, s1, ft_strlen(s1) + 1);
-	total = ft_strlcpy((str + start), s2, ft_strlen(s2) + 1);
-	total += start + 1;
-	str[total] = '\0';
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcpy((str + ft_strlen(s1)), s2, ft_strlen(s2) + 1);
 	return (str);
 }
 

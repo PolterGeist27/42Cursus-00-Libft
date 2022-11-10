@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:09:17 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/10 11:44:11 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 15:56:26 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,8 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 	size_t	j;
 	size_t	final;
 
-	if (size == 0)
-		return (ft_strlen(src));
-	else if (size < ft_strlen(dst))
-		final = ft_strlen(src) + size;
+	if (size == 0 || size <= ft_strlen(dst))
+		return (ft_strlen(src) + size);
 	else
 		final = ft_strlen(src) + ft_strlen(dst);
 	j = 0;
