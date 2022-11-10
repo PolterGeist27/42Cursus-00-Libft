@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 10:53:56 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 11:03:12 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:45:49 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char	*ft_strdup(const char *s)
 	i = ft_strlen(s) + 1;
 	j = 0;
 	dest = malloc(i * sizeof(char));
+	if (!dest)
+		return (0);
 	while (s[j] != '\0')
 	{
 		dest[j] = s[j];

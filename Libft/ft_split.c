@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 13:10:42 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 13:36:47 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:43:18 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ char	**ft_split(char const *s, char c)
 
 	i = 0;
 	j = 0;
+	if (!s)
+		return (NULL);
 	arr = (char **)malloc((ft_wordcount(s, c) + 1) * sizeof(char *));
 	if (!arr)
 		return (NULL);
@@ -91,9 +93,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (*(s + i) != '\0')
 		{
-			arr[j] = ft_getword(s, c, i);
-			j++;
-			i++;
+			arr[j++] = ft_getword(s, c, i++);
 		}
 		while (*(s + i) != c && *(s + i) != '\0')
 			i++;

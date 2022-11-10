@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:32:05 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 15:09:38 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:02:05 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	size_t	len;
 	size_t	total;
 
+	if (!s1 || !s2)
+		return (NULL);
 	len = ft_strlen(s1) + ft_strlen(s2) + 1;
 	str = (char *)malloc(len * sizeof(char));
 	if (!str)

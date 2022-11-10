@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:38:41 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/03 11:47:25 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:33:20 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 
-	if (!dst || !src)
-		return (0);
 	i = 0;
 	while (i + 1 < size && src[i])
 	{
@@ -70,18 +68,18 @@ size_t  strlcpy(char * dst, const char * src, size_t dsize)
 
 int main(void)
 {
-	char	dest[6] = "Hello";
-	char	src[30] = "Lorem Ipsum";
+	char	*dest = NULL;
+	char	*src = NULL;
 	// Another set of variables 
 	// so that the input of the second function 
 	// isnt the output of the first one
-	char	dest1[6] = "Hello";
-	char	src1[30] = "Lorem Ipsum";
+	char	*dest1 = NULL;
+	char	*src1 = NULL;
 	// Size of the pretended destination string (with null)
-	size_t	n = 6;
+	size_t	n = 10;
 
 	printf("User:  \n	String: %s	|	size: %d\n", dest, ft_strlcpy(dest, src, n));
-	printf("System:\n	String: %s	|	size: %d\n", dest1, strlcpy(dest1, src1, n));
+	//printf("System:\n	String: %s	|	size: %d\n", dest1, strlcpy(dest1, src1, n));
 	return (0);
 }
 */

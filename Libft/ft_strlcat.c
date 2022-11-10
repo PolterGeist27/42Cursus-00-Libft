@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/03 10:09:17 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/03 11:47:42 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 11:44:11 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	j;
-	size_t	n;
 	size_t	final;
 
-	j = ft_strlen(dst);
-	if (size <= j)
-		return (size + ft_strlen(src));
+	if (size == 0)
+		return (ft_strlen(src));
+	else if (size < ft_strlen(dst))
+		final = ft_strlen(src) + size;
+	else
+		final = ft_strlen(src) + ft_strlen(dst);
+	j = 0;
+	while (dst[j])
+		j++;
 	i = 0;
-	n = size - j;
-	final = j + ft_strlen(src);
-	while (i + 1 < n && src[i])
+	while (j + 1 < size && src[i])
 	{
 		dst[j] = src[i];
 		i++;
@@ -79,15 +82,15 @@ size_t	strlcat(char *dst, const char *src, size_t siz)
 
 int main(void)
 {
-	char	dest[30] = "";
-	char	src[30] = "";
+	char	*dest = NULL;
+	char	*src = "nyan !";
 	// Another set of variables 
 	// so that the input of the second function 
 	// isnt the output of the first one
-	char	dest1[30] = "";
-	char	src1[30] = "";
+	char	*dest1 = NULL;
+	char	*src1 = "nyan !";
 	// Size of the final string (length of dest + src)
-	size_t	n = 50;
+	size_t	n = 0;
 
 	printf("User:  \n	String: %s	|	size: %d\n", dest, ft_strlcat(dest, src, n));
 	printf("System:\n	String: %s	|	size: %d\n", dest1, strlcat(dest1, src1, n));

@@ -43,30 +43,33 @@ BNS_SRCS = ft_lstnew.c \
 			ft_lstiter.c \
 			ft_lstmap.c \
 
-OBJS = ${SRCS:.c=.o}
-BNS_OBJS	= $(BNS_SRCS:%.c=%.o)
-INC = ./
+OBJS = $(SRCS:.c=.o)
+BNS_OBJS = $(BNS_SRCS:%.c=%.o)
 
 NAME = libft.a
-CC = cc
 FLAGS = -Wall -Wextra -Werror
-RM = rm -f
+CC = cc
 LIBC = ar rc
+RM = rm -f
 
-all: ${NAME}
+all: $(NAME)
 
 $(NAME):
-	${CC} ${FLAGS} -c ${SRCS} -I ${INC}
-	${LIBC} ${NAME} ${OBJS}
+	$(CC) $(FLAGS) -c $(SRCS) -I ./
+	$(LIBC) $(NAME) $(OBJS)
 
-bonus: ${NAME}
-	${CC} ${FLAGS} -c ${BNS_SRCS} -I ${INC}
-	${LIBC} ${NAME} ${BNS_OBJS}
+bonus: $(NAME)
+	$(CC) $(FLAGS) -c $(BNS_SRCS) -I ./
+	$(LIBC) $(NAME) $(BNS_OBJS)
 
 clean:
-	${RM} ${OBJS} ${BNS_OBJS}
+	$(RM) $(OBJS) $(BNS_OBJS)
 
 fclean: clean
-	${RM} ${NAME}
+	$(RM) $(NAME)
 
 re: fclean all
+
+so:
+	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)

@@ -6,94 +6,24 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:58:22 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 16:45:14 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 12:39:29 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_contains(char const *set, char const c)
-{
-	size_t	i;
-
-	i = 0;
-	while (*(set + i) != '\0')
-	{
-		if (c == *(set + i))
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-static size_t	ft_totallen(char const *str, char const *set)
-{
-	size_t	i;
-	size_t	j;
-	size_t	len;
-
-	i = 0;
-	while (ft_contains(set, *(str + i)) && *(str + i) != '\0')
-		i++;
-	j = ft_strlen(str) - 1;
-	while (ft_contains(set, *(str + j)) && j >= 0)
-	{
-		if (j == 0)
-			return (0);
-		j--;
-	}
-	len = (ft_strlen(str) - 1) - (i - 1) - (ft_strlen(str) - j - 1);
-	return (len);
-}
-
-static size_t	ft_getidx(char const *s1, char const *set, int d)
-{
-	size_t	i;
-
-	if (d > 0)
-	{
-		i = 0;
-		while (ft_contains(set, *(s1 + i)) && *(s1 + i) != '\0')
-			i++;
-		return (i);
-	}
-	else
-	{
-		i = ft_strlen(s1);
-		i--;
-		while (ft_contains(set, *(s1 + i)) && i >= 0)
-			i--;
-		return (i);
-	}
-}
-
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	size_t	i;
-	size_t	j;
-	size_t	h;
-	size_t	len;
-	char	*str;
 
-	j = 0;
-	len = ft_totallen(s1, set) + 1;
-	str = (char *)malloc(len * sizeof(char));
-	if (!str)
+	if (!s1 || !set)
 		return (NULL);
-	if (len == 1)
-	{
-		str[0] = '\0';
-		return (str);
-	}
-	i = ft_getidx(s1, set, 1);
-	h = ft_getidx(s1, set, -1);
-	while (j <= h - i)
-	{
-		str[j] = *(s1 + i + j);
-		j++;
-	}
-	str[j + 1] = '\0';
-	return (str);
+	while (ft_strchr(set, *s1) && *s1)
+		s1++;
+	i = ft_strlen((char *)s1);
+	while (ft_strchr(set, s1[i]) && i != 0)
+		i--;
+	return (ft_substr(s1, 0, i + 1));
 }
 
 /*
@@ -109,10 +39,28 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	size_t	i;
+	char	*ptr;
+
+	ptr = (char *)malloc((len + 1) * sizeof(char));
+	if (!ptr || !s)
+		return (0);
+	i = 0;
+	while (len > i && *(s + start + i) != '\0' && start < ft_strlen((char *)s))
+	{
+		ptr[i] = *(s + start + i);
+		i++;
+	}
+	ptr[i] = '\0';
+	return (ptr);
+}
+
 int	main()
 {
-	char	*s1 = " \n \t ";
-	char	*set = "\t \n";
+	char	*s1 = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
+	char	*set = " \n\t";
 
 	printf("%s\n", ft_strtrim(s1, set));
 
