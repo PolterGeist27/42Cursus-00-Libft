@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:36:35 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/08 12:47:41 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:59:25 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*tmp;
 	t_list	*new;
 
+	if (!lst)
+		return (NULL);
 	head = ft_lstnew((*f)(lst->content));
-	if (!head || !lst)
+	if (!head)
 		return (NULL);
 	tmp = lst->next;
 	while (tmp != NULL)

@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 11:58:22 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/10 12:39:29 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/10 14:25:57 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 int	main()
 {
-	char	*s1 = "\t   \n\n\n  \n\n\t    Hello \t  Please\n Trim me !\t\t\t\n  \t\t\t\t  ";
+	char	*s1 = "";
 	char	*set = " \n\t";
 
 	printf("%s\n", ft_strtrim(s1, set));

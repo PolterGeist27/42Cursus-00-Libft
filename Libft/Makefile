@@ -31,7 +31,7 @@ SRCS = ft_memset.c \
 			ft_putchar_fd.c \
 			ft_putstr_fd.c \
 			ft_putendl_fd.c \
-			ft_putnbr_fd.c
+			ft_putnbr_fd.c \
 
 BNS_SRCS = ft_lstnew.c \
 			ft_lstadd_front.c \
@@ -54,13 +54,11 @@ RM = rm -f
 
 all: $(NAME)
 
-$(NAME):
-	$(CC) $(FLAGS) -c $(SRCS) -I ./
+$(NAME): $(OBJS)																	
 	$(LIBC) $(NAME) $(OBJS)
 
-bonus: $(NAME)
-	$(CC) $(FLAGS) -c $(BNS_SRCS) -I ./
-	$(LIBC) $(NAME) $(BNS_OBJS)
+bonus: $(BNS_OBJS) $(OBJS)
+	$(LIBC) $(NAME) $(BNS_OBJS) $(OBJS)
 
 clean:
 	$(RM) $(OBJS) $(BNS_OBJS)
@@ -69,7 +67,3 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-
-so:
-	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
