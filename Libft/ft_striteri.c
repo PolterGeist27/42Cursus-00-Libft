@@ -6,7 +6,7 @@
 /*   By: diogmart <diogmart@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/07 14:09:54 by diogmart          #+#    #+#             */
-/*   Updated: 2022/11/07 17:11:08 by diogmart         ###   ########.fr       */
+/*   Updated: 2022/11/11 12:14:37 by diogmart         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,16 @@
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	int	i;
+	unsigned int	i;
+	unsigned int	len;
 
 	i = 0;
-	while (*(s + i))
+	if (!s || !f)
+		return ;
+	len = ft_strlen(s);
+	while (i < len)
 	{
-		f(i, s + i);
-		i++;
+		(*f)(i, &s[i]);
+		i += 1;
 	}
 }

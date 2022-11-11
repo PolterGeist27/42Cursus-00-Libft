@@ -67,7 +67,3 @@ fclean: clean
 	$(RM) $(NAME)
 
 re: fclean all
-
-#so:
-#	$(CC) -nostartfiles -fPIC $(FLAGS) $(SRCS) $(BNS_SRCS)
-#	gcc -nostartfiles -shared -o libft.so $(OBJS) $(BNS_OBJS)
