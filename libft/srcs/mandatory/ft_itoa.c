@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-static int	ft_nbrlen(long n, int sign)
+static int	ft_lennbr(long n, int sign)
 {
 	int	len;
 
@@ -39,21 +39,19 @@ static char	*ft_putnbr(char *str, int len, long n)
 	return (str);
 }
 
-char	*ft_itoa(int nb)
+char	*ft_itoa(long n)
 {
-	long	n;
 	int		sign;
 	int		len;
 	char	*str;
 
-	n = nb;
 	sign = 1;
 	if (n < 0)
 	{
 		n = -n;
 		sign = -1;
 	}
-	len = ft_nbrlen(n, sign);
+	len = ft_lennbr(n, sign);
 	str = (char *)malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
